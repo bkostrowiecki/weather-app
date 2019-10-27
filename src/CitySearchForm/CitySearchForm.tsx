@@ -1,7 +1,13 @@
-import React, { useState, SyntheticEvent } from "react";
+import React, { useState, SyntheticEvent, useEffect } from "react";
+import gpsSignalIcon from './gps-signal.svg';
+import './CitySearchForm.scss';
 
 export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
-  const [searchQuery, setSearchQuery] = useState('Warsaw');
+  const [searchQuery, setSearchQuery] = useState(props.city);
+
+  useEffect(() => {
+    setSearchQuery(props.city);
+  }, [props.city]);
 
   const onSearchQueryChange = (event: SyntheticEvent<HTMLInputElement>) => {
     setSearchQuery(event.currentTarget.value);
@@ -10,6 +16,11 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
   const onSearchFormSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
     props.onSearch(searchQuery);
+  };
+
+  const onFindCityByGpsClick = (event: SyntheticEvent) => {
+    event.preventDefault();
+    props.onLocate();
   };
 
   return (
@@ -32,6 +43,13 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
           <button type="submit" className="btn btn-primary">
             Search for forecast
           </button>
+          <button
+            onClick={onFindCityByGpsClick}
+            className="btn btn-primary"
+            title="Find city by GPS"
+          >
+            <img className='gps-signal-icon' src={gpsSignalIcon} width="20" alt="GPS Signal Icon" />
+          </button>
         </div>
       </div>
       <div className="d-block d-sm-none pt-2 pb-3">
@@ -45,4 +63,6 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
 
 export interface CitySearchFormProps {
   onSearch: (searchQuery: string) => void;
+  onLocate: () => void;
+  city: string;
 }

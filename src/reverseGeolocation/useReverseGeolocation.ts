@@ -1,7 +1,7 @@
 import { useEffect, useState, Dispatch } from 'react';
 import { OpenCageApiResponse } from './openCageApiResponse';
 
-export const useReverseGeolocation = () => {
+export const useReverseGeolocation = (tryLocate: number) => {
   const [result, setResult] = useState(undefined) as [
     string | null | undefined,
     Dispatch<string | null | undefined>
@@ -40,7 +40,7 @@ export const useReverseGeolocation = () => {
     };
 
     return cleanup;
-  }, [setResult]);
+  }, [setResult, tryLocate]);
 
   return result;
 };

@@ -1,3 +1,12 @@
+## Features
+
+* Loading 5 days forecast for cities
+* Showing the average temperature
+* Showing the predicted conditions
+* Finding nearest city based on geo location
+* Fully responsive
+
+
 ## How to setup?
 
 ## Global requirements
@@ -60,3 +69,4 @@ I decided to show only average of the daily temperature. At the beginning I want
 
 ### Features
 * Proper daily temperature and nightly temperature
+* Showing air pressure

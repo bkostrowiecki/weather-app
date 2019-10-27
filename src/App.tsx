@@ -36,13 +36,19 @@ const App: React.FC = () => {
     document.title = 'Weather forecast';
   }, []);
 
-  const geolocationResult = useReverseGeolocation();
+  const [tryLocate, setTryLocate] = useState(0);
+
+  const geolocationResult = useReverseGeolocation(tryLocate);
 
   useEffect(() => {
     if (geolocationResult) {
       setCityNameToSearchFor(geolocationResult);
     }
   }, [geolocationResult]);
+
+  const onLocate = () => {
+    setTryLocate(tryLocate + 1);
+  };
 
   return (
     <div className="App">
@@ -52,7 +58,7 @@ const App: React.FC = () => {
             <div className="card pb-2">
               <div className="card-body">
                 <h1 className="text-center">Weather Forecast</h1>
-                <CitySearchForm onSearch={onCitySearchFormSearch} />
+                <CitySearchForm city={cityNameToSearchFor} onSearch={onCitySearchFormSearch} onLocate={onLocate} />
                 {(weather !== null || weather === undefined) && (
                   <WeatherCards
                     weather={weather as Weather | undefined}
