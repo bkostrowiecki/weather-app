@@ -6,8 +6,10 @@ export const transformWeatherApiResponse = (
 ) => {
   const forecastsList = weatherApiResponse.list;
 
+  const firstDate = moment(weatherApiResponse.list[0].dt_txt, 'YYYY-MM-DD');
+
   return [...Array(5)].map((_value, index) =>
-    getForecastForDate(moment().add(index, 'days'), forecastsList)
+    getForecastForDate(firstDate.clone().add(index, 'days'), forecastsList)
   );
 };
 
