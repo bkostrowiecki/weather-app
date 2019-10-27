@@ -40,7 +40,7 @@ describe('useWeatherApi', () => {
     fetchMock.mock('*', JSON.parse(weatherApiError404ResponseFixture));
 
     const { result, waitForNextUpdate } = renderHook(() =>
-      useWeatherApi('')
+      useWeatherApi('NOT EXISTING CITY')
     );
 
     await waitForNextUpdate();
@@ -52,11 +52,28 @@ describe('useWeatherApi', () => {
     fetchMock.mock('*', JSON.parse(weatherApiWarsawResponseFixture));
 
     const { result, waitForNextUpdate } = renderHook(() =>
-      useWeatherApi('')
+      useWeatherApi('Warsaw')
     );
 
     expect(result.current).toEqual(undefined);
 
     await waitForNextUpdate();
   });
+
+  it('does not do anything if search name is empty', (done: jest.DoneCallback) => {
+    fetchMock.mock('*', JSON.parse(weatherApiWarsawResponseFixture));
+        const { result, waitForNextUpdate } = renderHook(() =>
+            useWeatherApi('')
+        );
+
+        const promise = waitForNextUpdate();
+        promise.then(() => {
+            expect(true).toEqual('This assertion should failed because it should never be called!');
+        });
+
+        setTimeout(() => {
+            expect(true).toEqual(true);
+            done();
+        }, 1);
+  })
 });

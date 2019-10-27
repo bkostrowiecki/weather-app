@@ -6,10 +6,17 @@ $enable-shadows: true;
 .App {
   background-image: url(https://picsum.photos/1600/800/?blur=2);
   background-repeat: no-repeat;
-  background-size: auto 100%;
   background-attachment: fixed;
   @include media-breakpoint-up(sm) {
     height: 100vh;
     min-height: 100vh;
+  }
+
+  @media (orientation: portrait) {
+    background-size: auto 150%;
+  }
+
+  @media (orientation: landscape) {
+    background-size: 150% auto;
   }
 }
