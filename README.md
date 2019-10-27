@@ -1,6 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to setup?
 
-## Setting up project for the first time
+## Global requirements
+
+To run this application you need to have newset `yarn` installed. You can download it from here: https://yarnpkg.com/en/docs/install
+
+It's a package manager like `npm`, but created by `facebook`.
+*If you have no other choice, you can use regular `npm` instead of `yarn`, but you must be aware that dependencies are not locked for it. Then instead of using `yarn start` you need to go with `npm run start`. The same situation is for every other command.*
+
+### Setting up project for the first time
 
 To properly run project you need to create `.env` in the root directory. 
 
@@ -12,7 +19,7 @@ For example, the `.env` file would look like that:
 REACT_APP_WEATHER_API_KEY=420de34685a167618ef1c487988cf9ce
 ```
 
-### Starting project with `yarn start`
+### Developing project with `yarn start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -34,3 +41,22 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Thought process
+
+I didn't think and design much upfront. I decided to deliver one small feature at one commit and then move forward constantly. This process should be visible when you look at git history.
+
+I also wrote unit tests for parts that seemed crucial for me. I prefer not to sacrifice quality in the tight time constrains, rather find the tools that will fasten my development process.
+
+To fasten development, I decided to go with Bootstrap 4, it gives me responsiveness almost out of the box and the styling is pretty nice for a starter.
+
+Whole application is written with use of functional components and hooks. It's the newest approach and gives a possibility to write much less code with much more effects.
+
+## Trade offs I made
+
+I decided to show only average of the daily temperature. At the beginning I wanted to implement daily temperature indicator and nightly temperature indicator, but because I had to use 3 hour based API I didn't know how to calculate those values. It depends on the sunset and sunrise and those information aren't exposed.
+
+## What I might implement with more times
+
+### Features
+* Proper daily temperature and nightly temperature
