@@ -1,3 +1,8 @@
+## Demo
+
+The demo is available here:
+https://weather-app-bk.herokuapp.com/
+
 ## Features
 
 * Loading 5 days forecast for cities
