@@ -80,6 +80,9 @@ Also picking the icon and description is simplified. Probably it needs improveme
 * Showing information about wind
 * Maybe some charts would look nice?
 
+### Bugs
+* Should work on "jumping" when user hits search. When app is loading the button should still in the same place. Just the UX thing.
+
 ### Technicalities
 * Writing some e2e tests with Cypress and Cucumber to test high level features and to generate living documentation
 * Creating StoryBook for keeping designers and programmers on the same side

@@ -9,13 +9,14 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = props => {
   const [tryLocate, setTryLocate] = useState(0);
 
   const geolocationResult = useReverseGeolocation(tryLocate);
+  const { onSearch } = props;
 
   useEffect(() => {
     if (geolocationResult) {
       setSearchQuery(geolocationResult);
-      props.onSearch(geolocationResult);
+      onSearch(geolocationResult);
     }
-  }, [geolocationResult]);
+  }, [geolocationResult, onSearch]);
 
   const onSearchQueryChange = (event: SyntheticEvent<HTMLInputElement>) => {
     setSearchQuery(event.currentTarget.value);
@@ -23,7 +24,7 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = props => {
 
   const onSearchFormSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    props.onSearch(searchQuery);
+    onSearch(searchQuery);
   };
 
   const onFindCityByGpsClick = (event: SyntheticEvent) => {
