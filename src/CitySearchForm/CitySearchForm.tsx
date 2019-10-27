@@ -1,13 +1,21 @@
-import React, { useState, SyntheticEvent, useEffect } from "react";
+import React, { useState, SyntheticEvent, useEffect } from 'react';
 import gpsSignalIcon from './gps-signal.svg';
 import './CitySearchForm.scss';
+import { useReverseGeolocation } from '../reverseGeolocation/useReverseGeolocation';
 
-export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
-  const [searchQuery, setSearchQuery] = useState(props.city);
+export const CitySearchForm: React.FC<CitySearchFormProps> = props => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const [tryLocate, setTryLocate] = useState(0);
+
+  const geolocationResult = useReverseGeolocation(tryLocate);
 
   useEffect(() => {
-    setSearchQuery(props.city);
-  }, [props.city]);
+    if (geolocationResult) {
+      setSearchQuery(geolocationResult);
+      props.onSearch(geolocationResult);
+    }
+  }, [geolocationResult, props]);
 
   const onSearchQueryChange = (event: SyntheticEvent<HTMLInputElement>) => {
     setSearchQuery(event.currentTarget.value);
@@ -20,7 +28,7 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
 
   const onFindCityByGpsClick = (event: SyntheticEvent) => {
     event.preventDefault();
-    props.onLocate();
+    setTryLocate(tryLocate + 1);
   };
 
   return (
@@ -48,7 +56,12 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
             className="btn btn-primary"
             title="Find city by GPS"
           >
-            <img className='gps-signal-icon' src={gpsSignalIcon} width="20" alt="GPS Signal Icon" />
+            <img
+              className="gps-signal-icon"
+              src={gpsSignalIcon}
+              width="20"
+              alt="GPS Signal Icon"
+            />
           </button>
         </div>
       </div>
@@ -63,6 +76,4 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
 
 export interface CitySearchFormProps {
   onSearch: (searchQuery: string) => void;
-  onLocate: () => void;
-  city: string;
 }

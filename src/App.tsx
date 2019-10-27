@@ -6,7 +6,6 @@ import { Weather } from './weatherApi/weather';
 import { CitySearchForm } from './CitySearchForm/CitySearchForm';
 import { CityNotFound } from './CityNotFound/CityNotFound';
 import { usePrefetchedImages } from './prefetchImages/usePrefetchedImages';
-import { useReverseGeolocation } from './reverseGeolocation/useReverseGeolocation';
 
 const IMAGES_TO_PREFETCH = [
   'http://openweathermap.org/img/wn/01d@2x.png',
@@ -20,11 +19,12 @@ const IMAGES_TO_PREFETCH = [
   'http://openweathermap.org/img/wn/50d@2x.png'
 ];
 
-
 const App: React.FC = () => {
   const [cityNameToSearchFor, setCityNameToSearchFor] = useState('');
 
-  const weather: Weather | undefined | null = useWeatherApi(cityNameToSearchFor);
+  const weather: Weather | undefined | null = useWeatherApi(
+    cityNameToSearchFor
+  );
 
   const onCitySearchFormSearch = (searchQuery: string) => {
     setCityNameToSearchFor(searchQuery);
@@ -36,20 +36,6 @@ const App: React.FC = () => {
     document.title = 'Weather forecast';
   }, []);
 
-  const [tryLocate, setTryLocate] = useState(0);
-
-  const geolocationResult = useReverseGeolocation(tryLocate);
-
-  useEffect(() => {
-    if (geolocationResult) {
-      setCityNameToSearchFor(geolocationResult);
-    }
-  }, [geolocationResult]);
-
-  const onLocate = () => {
-    setTryLocate(tryLocate + 1);
-  };
-
   return (
     <div className="App">
       <div className="container h-100">
@@ -58,7 +44,7 @@ const App: React.FC = () => {
             <div className="card pb-2">
               <div className="card-body">
                 <h1 className="text-center">Weather Forecast</h1>
-                <CitySearchForm city={cityNameToSearchFor} onSearch={onCitySearchFormSearch} onLocate={onLocate} />
+                <CitySearchForm onSearch={onCitySearchFormSearch} />
                 {(weather !== null || weather === undefined) && (
                   <WeatherCards
                     weather={weather as Weather | undefined}
@@ -75,6 +61,6 @@ const App: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;
