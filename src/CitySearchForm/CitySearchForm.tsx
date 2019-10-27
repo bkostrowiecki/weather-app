@@ -27,6 +27,7 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
           className="form-control"
           value={searchQuery}
           onChange={onSearchQueryChange}
+          autoFocus={true}
         />
         <div className="input-group-append">
           <button type="submit" className="btn btn-primary">
