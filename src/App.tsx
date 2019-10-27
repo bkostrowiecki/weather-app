@@ -19,16 +19,20 @@ const App: React.FC = () => {
     <div className="App">
       <div className="container h-100">
         <div className="row d-flex align-items-center h-100">
-          <div className="col">
-            <h1 className="text-center">Weather Forecast</h1>
-            <CitySearchForm onSearch={onCitySearchFormSearch} />
-            {(weather !== null ||
-              weather === undefined) && (
-                <WeatherCards weather={weather as Weather | undefined} />
-              )}
-            {weather === null && (
-              <CityNotFound citySearchQuery={cityNameToSearchFor} />
-            )}
+            <div className="col">
+              <div className="card">
+                <div className="card-body">
+                  <h1 className="text-center">Weather Forecast</h1>
+                  <CitySearchForm onSearch={onCitySearchFormSearch} />
+                  {(weather !== null ||
+                    weather === undefined) && (
+                      <WeatherCards weather={weather as Weather | undefined} />
+                    )}
+                  {weather === null && (
+                    <CityNotFound citySearchQuery={cityNameToSearchFor} />
+                  )}
+                </div>
+              </div>
           </div>
         </div>
       </div>

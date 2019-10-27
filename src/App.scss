@@ -1,3 +1,12 @@
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
 .App {
-  height: 100vh;
+  background-image: url(https://picsum.photos/1600/800/?blur=2);
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-attachment: fixed;
+  @include media-breakpoint-up(sm) {
+    height: 100vh;
+    min-height: 100vh;
+  }
 }

@@ -15,7 +15,7 @@ function getForecastForDate(date: Moment, forecasts: WeatherApiListItem[]) {
     const listItemsForThisDate = findForecastsForDate(dateString, forecasts);
 
     if (listItemsForThisDate.length === 0) {
-        throw new Error(`Cannot calculate daily forecasts for ${dateString} because there is no data for given date`)
+        throw new Error(`Cannot calculate daily forecast for ${dateString} because there is no data for given date`)
     }
 
     const averageTemperature =
