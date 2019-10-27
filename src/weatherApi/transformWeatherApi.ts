@@ -23,9 +23,12 @@ function getForecastForDate(date: Moment, forecasts: WeatherApiListItem[]) {
         return acc + curr.main.temp;
       }, 0) / listItemsForThisDate.length;
 
+    const icon = getProperIconForDay(listItemsForThisDate);
+
     return {
         date: dateString,
-        temperature: averageTemperature
+        temperature: averageTemperature,
+        ...icon
     };
 }
 
@@ -38,4 +41,14 @@ function findForecastsForDate(dayToFind: string, forecasts: WeatherApiListItem[]
 
 function extractDayFromDatetime(dateTime: string) {
     return dateTime.split(' ')[0];
+}
+
+function getProperIconForDay(listItemsForThisDate: WeatherApiListItem[]) {
+  return {
+    iconUrl: `http://openweathermap.org/img/wn/${listItemsForThisDate[0].weather[0].icon.replace(
+      'n',
+      'd'
+    )}@2x.png`,
+    iconDescription: listItemsForThisDate[0].weather[0].description
+  };
 }

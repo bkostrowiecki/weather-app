@@ -4,16 +4,16 @@ import { Weather } from '../weatherApi/weather';
 import { WeatherCardLoader } from './WeatherCardLoader/WeatherCardLoader';
 
 export const WeatherCards: React.FC<WeatherCardsProps> = (props) => {
-  if (!props.weather) {
-      return (
-        <div className="card-group">
-          {[...new Array(5)].map((_value, index) => (
-            <div className="card" key={index}>
-              <WeatherCardLoader />
-            </div>
-          ))}
-        </div>
-      );
+  if (!props.weather || props.isLoading) {
+    return (
+      <div className="card-group">
+        {[...new Array(5)].map((_value, index) => (
+          <div className="card" key={index}>
+            <WeatherCardLoader />
+          </div>
+        ))}
+      </div>
+    );
   }
 
   return (
@@ -29,4 +29,5 @@ export const WeatherCards: React.FC<WeatherCardsProps> = (props) => {
 
 export interface WeatherCardsProps {
   weather?: Weather;
+  isLoading: boolean;
 };
