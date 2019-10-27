@@ -3,7 +3,7 @@ import { transformWeatherApiResponse } from './transformWeatherApi';
 import { Weather } from './weather';
 
 export const useWeatherApi = (cityNameToSearchFor: string) => {
-  const [result, setResult] = useState(undefined);
+  const [result, setResult] = useState(undefined) as [Weather | null | undefined, Dispatch<Weather | null | undefined>];
 
   useEffect(() => {
     let isMounted = true;
@@ -16,6 +16,11 @@ export const useWeatherApi = (cityNameToSearchFor: string) => {
       );
 
       const responseBody = await response.json();
+
+      if (responseBody.cod === '404') {
+        setResult(null);
+        return;
+      }
 
       if (isMounted) {
         const transformedResponse = transformWeatherApiResponse(responseBody);

@@ -29,11 +29,16 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
           onChange={onSearchQueryChange}
           autoFocus={true}
         />
-        <div className="input-group-append">
+        <div className="input-group-append d-none d-sm-block">
           <button type="submit" className="btn btn-primary">
             Search for forecast
           </button>
         </div>
+      </div>
+      <div className="d-block d-sm-none">
+        <button type="submit" className="btn btn-primary btn-block">
+          Search for forecast
+        </button>
       </div>
     </form>
   );

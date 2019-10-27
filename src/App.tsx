@@ -4,14 +4,14 @@ import { WeatherCards } from './WeatherCards/WeatherCards';
 import { useWeatherApi } from './weatherApi/useWeatherApi';
 import { Weather } from './weatherApi/weather';
 import { CitySearchForm } from './CitySearchForm/CitySearchForm';
+import { CityNotFound } from './CityNotFound/CityNotFound';
 
 const App: React.FC = () => {
   const [cityNameToSearchFor, setCityNameToSearchFor] = useState('Warsaw');
 
-  const weather: Weather | undefined = useWeatherApi(cityNameToSearchFor);
+  const weather: Weather | undefined | null = useWeatherApi(cityNameToSearchFor);
 
   const onCitySearchFormSearch = (searchQuery: string) => {
-    console.log(searchQuery);
     setCityNameToSearchFor(searchQuery);
   };
 
@@ -22,7 +22,13 @@ const App: React.FC = () => {
           <div className="col">
             <h1 className="text-center">Weather Forecast</h1>
             <CitySearchForm onSearch={onCitySearchFormSearch} />
-            <WeatherCards weather={weather} />
+            {(weather !== null ||
+              weather === undefined) && (
+                <WeatherCards weather={weather as Weather | undefined} />
+              )}
+            {weather === null && (
+              <CityNotFound citySearchQuery={cityNameToSearchFor} />
+            )}
           </div>
         </div>
       </div>
