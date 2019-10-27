@@ -65,6 +65,8 @@ Whole application is written with use of functional components and hooks. It's t
 
 I decided to show only average of the daily temperature. At the beginning I wanted to implement daily temperature indicator and nightly temperature indicator, but because I had to use 3 hour based API I didn't know how to calculate those values. It depends on the sunset and sunrise and those information aren't exposed.
 
+Also picking the icon and description is simplified. Probably it needs improvement, because the application simply takes first result for the day.
+
 ## What I might implement with more times
 
 ### Features
