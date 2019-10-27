@@ -6,7 +6,6 @@
 * Finding nearest city based on geo location
 * Fully responsive
 
-
 ## How to setup?
 
 ## Global requirements
@@ -27,6 +26,10 @@ For example, the `.env` file would look like that:
 ```
 REACT_APP_WEATHER_API_KEY=420de34685a167618ef1c487988cf9ce
 ```
+
+Then use command `yarn` to install dependencies.
+
+**Be aware** that `yarn` will show you missing peer dependencies. It's okey, those dependencies are for some Bootstrap 4 components which are not used.
 
 ### Developing project with `yarn start`
 
@@ -72,3 +75,12 @@ Also picking the icon and description is simplified. Probably it needs improveme
 ### Features
 * Proper daily temperature and nightly temperature
 * Showing air pressure
+* Improving calculation of the weather's description
+* Showing possibility of rain
+* Showing information about wind
+* Maybe some charts would look nice?
+
+### Technicalities
+* Writing some e2e tests with Cypress and Cucumber to test high level features and to generate living documentation
+* Creating StoryBook for keeping designers and programmers on the same side
+* Establishing proper CI/CD
