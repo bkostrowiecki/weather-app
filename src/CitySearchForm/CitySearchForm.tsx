@@ -15,7 +15,7 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = props => {
       setSearchQuery(geolocationResult);
       props.onSearch(geolocationResult);
     }
-  }, [geolocationResult, props]);
+  }, [geolocationResult]);
 
   const onSearchQueryChange = (event: SyntheticEvent<HTMLInputElement>) => {
     setSearchQuery(event.currentTarget.value);
