@@ -20,7 +20,7 @@ export const useReverseGeolocation = (tryLocate: number) => {
 
     const getCityNameFromApi = (async (latitude: number, longitude: number) => {
       const response = await fetch(
-        `https://api.opencagedata.com/geocode/v1/json?key=${process.env.REACT_APP_OPEN_CAGE_API_KEY}&q=${latitude},${longitude}`
+        `https://api.opencagedata.com/geocode/v1/json?key=${process.env.REACT_APP_OPEN_CAGE_API_KEY}&q=${latitude},${longitude}&language=en-US`
       );
 
       const responseBody: OpenCageApiResponse = await response.json();
