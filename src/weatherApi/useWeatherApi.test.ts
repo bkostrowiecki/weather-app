@@ -40,7 +40,7 @@ describe('useWeatherApi', () => {
     fetchMock.mock('*', JSON.parse(weatherApiError404ResponseFixture));
 
     const { result, waitForNextUpdate } = renderHook(() =>
-      useWeatherApi('ABCDEFGIJKLMN')
+      useWeatherApi('')
     );
 
     await waitForNextUpdate();
@@ -52,7 +52,7 @@ describe('useWeatherApi', () => {
     fetchMock.mock('*', JSON.parse(weatherApiWarsawResponseFixture));
 
     const { result, waitForNextUpdate } = renderHook(() =>
-      useWeatherApi('ABCDEFGIJKLMN')
+      useWeatherApi('')
     );
 
     expect(result.current).toEqual(undefined);

@@ -1,4 +1,4 @@
-import { useEffect, useState, Dispatch, SetStateAction } from 'react';
+import { useEffect, useState, Dispatch } from 'react';
 import { transformWeatherApiResponse } from './transformWeatherApi';
 import { Weather } from './weather';
 
@@ -33,7 +33,7 @@ export const useWeatherApi = (cityNameToSearchFor: string) => {
     };
 
     return cleanup;
-  }, [cityNameToSearchFor]);
+  }, [cityNameToSearchFor, setResult]);
 
   return result;
 };

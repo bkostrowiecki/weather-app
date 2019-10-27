@@ -1,10 +1,11 @@
-import React, { SyntheticEvent, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import { WeatherCards } from './WeatherCards/WeatherCards';
 import { useWeatherApi } from './weatherApi/useWeatherApi';
 import { Weather } from './weatherApi/weather';
 import { CitySearchForm } from './CitySearchForm/CitySearchForm';
 import { CityNotFound } from './CityNotFound/CityNotFound';
+import { usePrefetchedImages } from './prefetchImages/usePrefetchedImages';
 
 const IMAGES_TO_PREFETCH = [
   'http://openweathermap.org/img/wn/01d@2x.png',
@@ -28,21 +29,10 @@ const App: React.FC = () => {
     setCityNameToSearchFor(searchQuery);
   };
 
-  const [didPrefetchImages, setDidPrefetchImages] = useState(false);
+  const didPrefetchImages = usePrefetchedImages(IMAGES_TO_PREFETCH);
 
   useEffect(() => {
-    let prefetchingCounter = 1;
-    IMAGES_TO_PREFETCH.forEach((imageUrl) => {
-      const image = new Image();
-      image.src = imageUrl;
-      image.onload = () => {
-        prefetchingCounter++;
-
-        if (prefetchingCounter === IMAGES_TO_PREFETCH.length) {
-          setDidPrefetchImages(true);
-        }
-      };
-    });
+    document.title = 'Weather forecast';
   }, []);
 
   return (
@@ -50,7 +40,7 @@ const App: React.FC = () => {
       <div className="container h-100">
         <div className="row d-flex align-items-center h-100">
           <div className="col">
-            <div className="card">
+            <div className="card pb-2">
               <div className="card-body">
                 <h1 className="text-center">Weather Forecast</h1>
                 <CitySearchForm onSearch={onCitySearchFormSearch} />

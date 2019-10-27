@@ -1,5 +1,4 @@
 import React, { useState, SyntheticEvent } from "react";
-import { tsPropertySignature } from "@babel/types";
 
 export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
   const [searchQuery, setSearchQuery] = useState('Warsaw');
@@ -35,7 +34,7 @@ export const CitySearchForm: React.FC<CitySearchFormProps> = (props) => {
           </button>
         </div>
       </div>
-      <div className="d-block d-sm-none">
+      <div className="d-block d-sm-none pt-2 pb-3">
         <button type="submit" className="btn btn-primary btn-block">
           Search for forecast
         </button>
