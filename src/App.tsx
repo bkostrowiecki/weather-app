@@ -6,6 +6,7 @@ import { Weather } from './weatherApi/weather';
 import { CitySearchForm } from './CitySearchForm/CitySearchForm';
 import { CityNotFound } from './CityNotFound/CityNotFound';
 import { usePrefetchedImages } from './prefetchImages/usePrefetchedImages';
+import { useReverseGeolocation } from './reverseGeolocation/useReverseGeolocation';
 
 const IMAGES_TO_PREFETCH = [
   'http://openweathermap.org/img/wn/01d@2x.png',
@@ -21,7 +22,7 @@ const IMAGES_TO_PREFETCH = [
 
 
 const App: React.FC = () => {
-  const [cityNameToSearchFor, setCityNameToSearchFor] = useState('Warsaw');
+  const [cityNameToSearchFor, setCityNameToSearchFor] = useState('');
 
   const weather: Weather | undefined | null = useWeatherApi(cityNameToSearchFor);
 
@@ -34,6 +35,14 @@ const App: React.FC = () => {
   useEffect(() => {
     document.title = 'Weather forecast';
   }, []);
+
+  const geolocationResult = useReverseGeolocation();
+
+  useEffect(() => {
+    if (geolocationResult) {
+      setCityNameToSearchFor(geolocationResult);
+    }
+  }, [geolocationResult]);
 
   return (
     <div className="App">

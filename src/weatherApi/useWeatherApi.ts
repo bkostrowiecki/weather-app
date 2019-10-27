@@ -8,6 +8,10 @@ export const useWeatherApi = (cityNameToSearchFor: string) => {
   useEffect(() => {
     let isMounted = true;
 
+    if (!cityNameToSearchFor) {
+        return;
+    }
+
     setResult(undefined);
 
     (async () => {
@@ -17,7 +21,7 @@ export const useWeatherApi = (cityNameToSearchFor: string) => {
 
       const responseBody = await response.json();
 
-      if (responseBody.cod === '404') {
+      if (responseBody.cod !== '200') {
         setResult(null);
         return;
       }

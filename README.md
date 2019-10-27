@@ -2,7 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Setting up project for the first time
 
-To properly run project you need to create `.env` in the root directory. Then you need to set the variable `REACT_APP_WEATHER_API_KEY` to the valid API key for http://openweathermap.org API.
+To properly run project you need to create `.env` in the root directory. 
+
+1. Set the variable `REACT_APP_WEATHER_API_KEY` to the valid API key for http://openweathermap.org API.
+2. Set the variable `REACT_APP_OPEN_CAGE_API_KEY` to the valid API key for https://opencagedata.com/ API.
 
 For example, the `.env` file would look like that:
 ```

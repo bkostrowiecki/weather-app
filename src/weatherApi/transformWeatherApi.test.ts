@@ -3,6 +3,12 @@ import { transformWeatherApiResponse } from './transformWeatherApi';
 import moment from 'moment';
 
 describe('Transform 3 hour based weather forecast to simple view model', () => {
+  beforeEach(() => {
+    jest
+      .spyOn(global.Date, 'now')
+      .mockImplementation(() => new Date('2019-10-27').valueOf())
+  });
+
   it(`calculates average temperatures for 5 days`, () => {
     const weatherApiResponse = createTransformWeatherApiFixture();
 
