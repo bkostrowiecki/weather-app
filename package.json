@@ -44,7 +44,7 @@
     "react-test-renderer": "^16.11.0"
   },
   "engines": {
-    "node": "10.16.2",
-    "yarn": "1.9.4"
+    "node": "10.x",
+    "yarn": "1.x"
   }
 }
