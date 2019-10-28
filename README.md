@@ -36,6 +36,12 @@ Then use command `yarn` to install dependencies.
 
 **Be aware** that `yarn` will show you missing peer dependencies. It's okey, those dependencies are for some Bootstrap 4 components which are not used.
 
+## Warnings explanation
+
+When you install dependencies there are some warning, that peer dependencies are missing I some packages would not work correctly. I'm aware of this warning, but those dependencies aren't needed because I use components that don't use those packages.
+
+When you start the project there will be 3 warnings. 2 of them are related to CORS. 3rd is React warning which suggests placing dependency for hooks (useEffect), which is not correct in this case, because useEffect shouldn't be dependend on callback function.
+
 ### Developing project with `yarn start`
 
 Runs the app in the development mode.<br />
