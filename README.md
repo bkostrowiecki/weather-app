@@ -92,7 +92,7 @@ Also picking the icon and description is simplified. Probably it needs improveme
 * Maybe some charts would look nice?
 
 ### Bugs
-* Should work on "jumping" when user hits search. When app is loading the button should still in the same place. Just the UX thing.
+* Should work on "jumping" when user hits Search button. When app is loading the button should still be in the same place. Just the UX thing.
 
 ### Technicalities
 * Writing some e2e tests with Cypress and Cucumber to test high level features and to generate living documentation
