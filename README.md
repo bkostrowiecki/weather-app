@@ -92,3 +92,4 @@ Also picking the icon and description is simplified. Probably it needs improveme
 * Writing some e2e tests with Cypress and Cucumber to test high level features and to generate living documentation
 * Creating StoryBook for keeping designers and programmers on the same side
 * Creating proper CI/CD
+* Optimization
