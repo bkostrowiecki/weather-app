@@ -18,7 +18,7 @@ https://weather-app-bk.herokuapp.com/
 To run this application you need to have newset `yarn` installed. You can download it from here: https://yarnpkg.com/en/docs/install
 
 It's a package manager like `npm`, but created by `facebook`.
-*If you have no other choice, you can use regular `npm` instead of `yarn`, but you must be aware that dependencies are not locked for it. Then instead of using `yarn start` you need to go with `npm run start`. The same situation is for every other command.*
+**If you have no other choice, you can use regular `npm` instead of `yarn`, but you must be aware that dependencies are not locked for it. Then instead of using `yarn start` you need to go with `npm run start`. The same situation is for every other command.**
 
 ### Setting up project for the first time
 
@@ -65,9 +65,9 @@ I didn't think and design much upfront. I decided to deliver one small feature a
 
 I also wrote unit tests for parts that seemed crucial for me. I prefer not to sacrifice quality in the tight time constrains, rather find the tools that will fasten my development process.
 
-To fasten development, I decided to go with Bootstrap 4, it gives me responsiveness almost out of the box and the styling is pretty nice for a starter.
+To fasten development, I decided to go with Bootstrap 4, it gives me RWD behaviours almost out of the box and the styling is pretty nice for a starter.
 
-Whole application is written with use of functional components and hooks. It's the newest approach and gives a possibility to write much less code with much more effects.
+Whole application is written with use of functional components and hooks. It's the most up to date aproach.
 
 ## Trade offs I made
 
@@ -91,4 +91,4 @@ Also picking the icon and description is simplified. Probably it needs improveme
 ### Technicalities
 * Writing some e2e tests with Cypress and Cucumber to test high level features and to generate living documentation
 * Creating StoryBook for keeping designers and programmers on the same side
-* Establishing proper CI/CD
+* Creating proper CI/CD
